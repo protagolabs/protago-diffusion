@@ -11,7 +11,7 @@ import shutil
 from face_align import align_face
 
 # we use brisque score to evaluate the img quality 
-# the range from brisque is 
+# the range from brisque is 0-100
 # Anish Mittal, Anush Krishna Moorthy, and Alan Conrad Bovik. 
 # No-reference image quality assessment in the spa- tial domain. 
 # IEEE Transactions on Image Processing, 21(12):4695–4708, 2012. 5
