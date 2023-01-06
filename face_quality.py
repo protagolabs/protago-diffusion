@@ -27,8 +27,9 @@ def main(args):
 
         print(x)
 
-        img = align_face(os.path.join(args.src, x))
+        # img = align_face(os.path.join(args.src, x))
 
+        img = cv2.imread(os.path.join(args.src, x))
         img_np = np.array(img)
 
         # img_np = np.transpose(img_np, (2,0,1))
@@ -37,7 +38,7 @@ def main(args):
         score = cv2.quality.QualityBRISQUE_compute(img_np, "brisque_model_live.yml", "brisque_range_live.yml")[0]
 
 
-        if score > args.th:
+        if score < args.th:
             src = os.path.join(args.src, x)
             dst = os.path.join(args.dst, x)
             shutil.copyfile(src, dst)
@@ -58,7 +59,7 @@ if __name__ == "__main__":
                         epilog = 'Text at the bottom of help')
     parser.add_argument('--src', type=str, default="output")
     parser.add_argument('--dst', type=str, default="filtered_output")
-    parser.add_argument('--th', type=float, default=80.0)
+    parser.add_argument('--th', type=float, default=50.0)
 
     args = parser.parse_args()
 
